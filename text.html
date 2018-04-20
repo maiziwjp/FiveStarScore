@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body,ul,li,p{ padding:0; margin:0;}
+li{ list-style:none; width:21px; height:23px; margin-right:4px; background:url(black.gif); float:left;}
+#grade{ display:-webkit-box; margin:50px 50px;}
+p{ margin:0 10px 0 10px;}
+</style>
+</head>
+
+<body>
+<div id="grade">
+	<p>总体评价:</p>
+    <ul id="list">
+    	<li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <p id="intro">推荐</p>
+</div>
+</body>
+</html>
+<script>
+var arrLi=document.getElementsByTagName('li');
+var intro=document.getElementById('intro');
+var flag=true;
+for(var i=0;i<arrLi.length;i++)
+{
+	arrLi[i].index=i;
+}
+for(var i=0;i<arrLi.length;i++)
+{
+	arrLi[i].onclick= function(){
+		if(this.index<2)
+		{
+			for(var j=0;j<=this.index;j++)
+			{
+				arrLi[j].style.backgroundImage="url(gray.gif)";
+			}
+			for(var k=this.index+1;k<arrLi.length;k++)
+			{
+				arrLi[k].style.backgroundImage="url(black.gif)";
+			}
+		}else{
+			for(var j=0;j<=this.index;j++)
+			{
+				arrLi[j].style.backgroundImage="url(yellow.gif)";
+			}
+			for(var k=this.index+1;k<arrLi.length;k++)
+			{
+				arrLi[k].style.backgroundImage="url(black.gif)";
+			}	
+		}
+		flag=false;
+	};
+	arrLi[i].onmouseover=selectLi;
+	arrLi[i].onmouseout=function(){
+		if(flag==true)
+		{
+			for(var j=0;j<arrLi.length;j++)
+			{
+				arrLi[j].style.backgroundImage="url(black.gif)";
+			}
+		}
+	};
+}
+function selectLi(){
+	if(this.index<2)
+		{
+			for(var j=0;j<=this.index;j++)
+			{
+				arrLi[j].style.backgroundImage="url(gray.gif)";
+			}
+			for(var k=this.index+1;k<arrLi.length;k++)
+			{
+				arrLi[k].style.backgroundImage="url(black.gif)";
+			}
+		}else{
+			for(var j=0;j<=this.index;j++)
+			{
+				arrLi[j].style.backgroundImage="url(yellow.gif)";
+			}
+			for(var k=this.index+1;k<arrLi.length;k++)
+			{
+				arrLi[k].style.backgroundImage="url(black.gif)";
+			}	
+		}
+};
+</script>
